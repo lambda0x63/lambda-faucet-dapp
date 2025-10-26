@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useAccount } from "wagmi";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
 
 export default function FaucetPage() {
+  const { address, isConnected } = useAccount();
   const [copiedCode, setCopiedCode] = useState(false);
 
   const copyToClipboard = () => {
@@ -72,6 +74,12 @@ export default function FaucetPage() {
             </h3>
           </div>
 
+          {!isConnected ? (
+            <div className="border-4 border-foreground p-20 text-center">
+              <p className="text-2xl text-muted-foreground mb-8">Connect your wallet to claim tokens</p>
+              <p className="text-sm text-muted-foreground">Use the CONNECT WALLET button in the header</p>
+            </div>
+          ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Request Card */}
             <div className="border-4 border-foreground p-12">
@@ -160,10 +168,12 @@ export default function FaucetPage() {
               </div>
             </div>
           </div>
+          )}
         </div>
       </section>
 
       {/* REFERRAL SECTION */}
+      {isConnected && (
       <section className="relative py-40 border-b-4 border-foreground bg-card/30">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute bottom-0 right-0 w-1/3 h-full opacity-20 pointer-events-none">
@@ -243,8 +253,10 @@ export default function FaucetPage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* YOUR STATS SECTION */}
+      {isConnected && (
       <section className="relative py-40 border-b-4 border-foreground">
         <div className="absolute inset-0 overflow-hidden">
           <div
@@ -295,6 +307,7 @@ export default function FaucetPage() {
           </div>
         </div>
       </section>
+      )}
 
       {/* GLOBAL STATS SECTION */}
       <section className="relative py-40 border-b-4 border-foreground bg-card/30">
@@ -347,39 +360,8 @@ export default function FaucetPage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t-4 border-foreground py-20 bg-background">
+      <footer className="border-t-4 border-foreground py-12 bg-background">
         <div className="container mx-auto max-w-7xl px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 pb-16 border-b-2 border-foreground">
-            <div>
-              <h3 className="font-black text-2xl mb-4" style={{ fontFamily: "Oswald, sans-serif" }}>
-                λ LAMBDA
-              </h3>
-              <p className="text-sm text-muted-foreground font-light">
-                Function-based token distribution protocol built on Solidity. By lambda0x63.
-              </p>
-            </div>
-            {[
-              ["Protocol", ["Contract ABI", "Mechanics", "Parameters"]],
-              ["Developer", ["GitHub", "Twitter", "Docs"]],
-              ["Network", ["Testnet", "Status", "Explore"]],
-            ].map((col, idx) => (
-              <div key={idx}>
-                <h4 className="font-black mb-4" style={{ fontFamily: "Oswald, sans-serif" }}>
-                  {col[0]}
-                </h4>
-                <ul className="text-sm space-y-2 text-muted-foreground font-light">
-                  {(col[1] as string[]).map((link) => (
-                    <li key={link}>
-                      <a href="#" className="hover:text-foreground transition">
-                        {link}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
           <div className="text-center text-sm text-muted-foreground font-light">
             <p>&copy; 2025 Lambda Protocol. Built by lambda0x63.</p>
           </div>

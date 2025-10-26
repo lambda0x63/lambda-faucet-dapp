@@ -277,31 +277,8 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t-4 border-foreground py-20 bg-background">
+      <footer className="border-t-4 border-foreground py-12 bg-background">
         <div className="container mx-auto max-w-7xl px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 pb-16 border-b-2 border-foreground">
-            <div>
-              <h3 className="font-black text-2xl mb-4" style={{fontFamily: "Oswald, sans-serif"}}>λ LAMBDA</h3>
-              <p className="text-sm text-muted-foreground font-light">
-                Function-based token distribution protocol built on Solidity. By lambda0x63.
-              </p>
-            </div>
-            {[
-              ["Protocol", ["Contract ABI", "Mechanics", "Parameters"]],
-              ["Developer", ["GitHub", "Twitter", "Docs"]],
-              ["Network", ["Testnet", "Status", "Explore"]],
-            ].map((col, idx) => (
-              <div key={idx}>
-                <h4 className="font-black mb-4" style={{fontFamily: "Oswald, sans-serif"}}>{col[0]}</h4>
-                <ul className="text-sm space-y-2 text-muted-foreground font-light">
-                  {(col[1] as string[]).map((link) => (
-                    <li key={link}><a href="#" className="hover:text-foreground transition">{link}</a></li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-
           <div className="text-center text-sm text-muted-foreground font-light">
             <p>&copy; 2025 Lambda Protocol. Built by lambda0x63.</p>
           </div>

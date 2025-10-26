@@ -35,7 +35,7 @@ export function Header() {
           {/* Nav */}
           <nav className="hidden md:flex gap-8">
             <a
-              href="#"
+              href="/"
               className="text-sm font-bold tracking-wide text-muted-foreground hover:text-foreground transition-colors relative group"
               style={{fontFamily: "Space Mono, monospace"}}
             >
@@ -43,19 +43,19 @@ export function Header() {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </a>
             <a
-              href="#"
+              href="/faucet"
+              className="text-sm font-bold tracking-wide text-muted-foreground hover:text-foreground transition-colors relative group"
+              style={{fontFamily: "Space Mono, monospace"}}
+            >
+              FAUCET
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a
+              href="/stats"
               className="text-sm font-bold tracking-wide text-muted-foreground hover:text-foreground transition-colors relative group"
               style={{fontFamily: "Space Mono, monospace"}}
             >
               STATS
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a
-              href="#"
-              className="text-sm font-bold tracking-wide text-muted-foreground hover:text-foreground transition-colors relative group"
-              style={{fontFamily: "Space Mono, monospace"}}
-            >
-              DOCS
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-foreground transition-all duration-300 group-hover:w-full"></span>
             </a>
           </nav>

@@ -48,9 +48,7 @@ export function Header() {
         </div>
 
         {/* Connect Button */}
-        <div className="flex items-center gap-4">
-          <ConnectButton />
-        </div>
+        <ConnectButton />
       </div>
     </header>
   );

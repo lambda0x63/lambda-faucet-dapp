@@ -149,3 +149,45 @@
     @apply text-sm font-semibold;
   }
 }
+
+/* RainbowKit Connect Button Styling */
+[data-testid="rk-connect-button"] {
+  font-family: "Oswald", sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  border: 2px solid currentColor !important;
+  border-radius: 0 !important;
+  text-transform: uppercase !important;
+  font-size: 0.875rem !important;
+  padding: 0.5rem 1.25rem !important;
+  transition: all 0.3s ease !important;
+  background-color: transparent !important;
+  color: currentColor !important;
+}
+
+[data-testid="rk-connect-button"]:hover {
+  background-color: var(--foreground) !important;
+  color: var(--background) !important;
+}
+
+/* Account Menu Button */
+[data-testid="rk-account-menu-button"] {
+  font-family: "Oswald", sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  border: 2px solid currentColor !important;
+  border-radius: 0 !important;
+  text-transform: uppercase !important;
+  font-size: 0.875rem !important;
+  padding: 0.5rem 1.25rem !important;
+}
+
+[data-testid="rk-account-menu-button"]:hover {
+  background-color: var(--foreground) !important;
+  color: var(--background) !important;
+}
+
+/* Remove RainbowKit default styles */
+button[type="button"] {
+  border-radius: 0 !important;
+}

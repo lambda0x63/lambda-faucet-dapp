@@ -16,7 +16,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className={`border-b-4 border-foreground sticky top-0 z-50 transition-all duration-300 ${
+    <header className={`border-b-4 border-foreground fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? "bg-background" : "bg-transparent"
     }`}>
       <div className="container mx-auto max-w-7xl px-8 py-6 flex items-center justify-between">

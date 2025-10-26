@@ -43,7 +43,7 @@ export default function Home() {
             </div>
 
             <p className="text-2xl max-w-2xl leading-tight text-muted-foreground font-light" style={{fontFamily: "Courier Prime, monospace"}}>
-              A Personal<br />
+              A<br />
               <span className="text-foreground font-bold">FUNCTION-BASED PROTOCOL</span><br />
               for token distribution
             </p>
@@ -283,7 +283,7 @@ export default function Home() {
             <div>
               <h3 className="font-black text-2xl mb-4" style={{fontFamily: "Oswald, sans-serif"}}>λ LAMBDA</h3>
               <p className="text-sm text-muted-foreground font-light">
-                Personal protocol by lambda0x63. Function-based token distribution built on Solidity.
+                Function-based token distribution protocol built on Solidity. By lambda0x63.
               </p>
             </div>
             {[
@@ -303,7 +303,7 @@ export default function Home() {
           </div>
 
           <div className="text-center text-sm text-muted-foreground font-light">
-            <p>&copy; 2025 Lambda Protocol. Made by lambda0x63. Explore blockchain development.</p>
+            <p>&copy; 2025 Lambda Protocol. Built by lambda0x63.</p>
           </div>
         </div>
       </footer>

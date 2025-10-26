@@ -43,9 +43,9 @@ export default function Home() {
             </div>
 
             <p className="text-2xl max-w-2xl leading-tight text-muted-foreground font-light" style={{fontFamily: "Courier Prime, monospace"}}>
-              An<br />
-              <span className="text-foreground font-bold">INDUSTRIAL EXHIBITION</span><br />
-              of token distribution
+              A Personal<br />
+              <span className="text-foreground font-bold">FUNCTION-BASED PROTOCOL</span><br />
+              for token distribution
             </p>
 
             <div className="flex gap-6 pt-8">
@@ -75,16 +75,16 @@ export default function Home() {
 
         <div className="relative z-10 container mx-auto max-w-7xl px-8">
           <div className="mb-20 border-l-8 border-foreground pl-8">
-            <h2 className="text-7xl font-black mb-4" style={{fontFamily: "Oswald, sans-serif"}}>EXHIBITION</h2>
-            <h3 className="text-3xl font-light text-muted-foreground" style={{fontFamily: "Space Mono, monospace"}}>metrics & measurements</h3>
+            <h2 className="text-7xl font-black mb-4" style={{fontFamily: "Oswald, sans-serif"}}>PROTOCOL</h2>
+            <h3 className="text-3xl font-light text-muted-foreground" style={{fontFamily: "Space Mono, monospace"}}>parameters & configuration</h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border-2 border-foreground">
             {[
-              { label: "DISTRIBUTED", value: "500K", unit: "LMDA" },
-              { label: "VISITORS", value: "12.5K", unit: "" },
-              { label: "INTERACTIONS", value: "45.2K", unit: "" },
-              { label: "BASE RATE", value: "100", unit: "LMDA" },
+              { label: "BASE AMOUNT", value: "100", unit: "LMDA" },
+              { label: "COOLDOWN", value: "1", unit: "HOUR" },
+              { label: "BALANCE STAGES", value: "5", unit: "LEVELS" },
+              { label: "TIME ZONES", value: "3", unit: "UTC" },
             ].map((stat, idx) => (
               <div
                 key={idx}
@@ -113,8 +113,8 @@ export default function Home() {
 
         <div className="relative z-10 container mx-auto max-w-7xl px-8">
           <div className="mb-20 border-l-8 border-foreground pl-8">
-            <h2 className="text-7xl font-black mb-4" style={{fontFamily: "Oswald, sans-serif"}}>EXHIBITS</h2>
-            <h3 className="text-3xl font-light text-muted-foreground" style={{fontFamily: "Space Mono, monospace"}}>core features</h3>
+            <h2 className="text-7xl font-black mb-4" style={{fontFamily: "Oswald, sans-serif"}}>MECHANICS</h2>
+            <h3 className="text-3xl font-light text-muted-foreground" style={{fontFamily: "Space Mono, monospace"}}>smart contract features</h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -122,22 +122,22 @@ export default function Home() {
               {
                 num: "I",
                 title: "DYNAMIC MULTIPLIERS",
-                desc: "Your earnings shift with balance, time, and activity. A system responding to its participants.",
+                desc: "Earnings scale with balance status, UTC time zone, and request frequency. Optimized distribution algorithm.",
               },
               {
                 num: "II",
-                title: "NETWORK REWARDS",
-                desc: "Build connections. Earn 10% for each referral. 20% bonus for newcomers.",
+                title: "REFERRAL SYSTEM",
+                desc: "Auto-generated referral codes. 20% bonus for new users. 10% reward per referral. Trustless implementation.",
               },
               {
                 num: "III",
-                title: "LIVE ANALYTICS",
-                desc: "Real-time tracking. Charts. Statistics. Growth metrics. Watch your journey unfold.",
+                title: "STATE TRACKING",
+                desc: "Comprehensive on-chain statistics. Per-user metrics. Global aggregation. Solidity view functions.",
               },
               {
                 num: "IV",
-                title: "FORTIFIED SECURITY",
-                desc: "OpenZeppelin standards. Reentrancy guards. Comprehensive security architecture.",
+                title: "SECURITY FIRST",
+                desc: "OpenZeppelin audited. Reentrancy protected. Pausable emergency controls. Safe upgradeable architecture.",
               },
             ].map((exhibit, idx) => (
               <div
@@ -221,15 +221,15 @@ export default function Home() {
 
         <div className="relative z-10 container mx-auto max-w-7xl px-8">
           <div className="mb-20 border-l-8 border-foreground pl-8">
-            <h2 className="text-7xl font-black mb-4" style={{fontFamily: "Oswald, sans-serif"}}>JOURNEY</h2>
-            <h3 className="text-3xl font-light text-muted-foreground" style={{fontFamily: "Space Mono, monospace"}}>three stages</h3>
+            <h2 className="text-7xl font-black mb-4" style={{fontFamily: "Oswald, sans-serif"}}>WORKFLOW</h2>
+            <h3 className="text-3xl font-light text-muted-foreground" style={{fontFamily: "Space Mono, monospace"}}>three operations</h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { num: "01", title: "CONNECT", desc: "Link your wallet. Enter the exhibition." },
-              { num: "02", title: "CLAIM", desc: "Request tokens. Real-time calculation." },
-              { num: "03", title: "GROW", desc: "Track earnings. Build your network." },
+              { num: "01", title: "INITIALIZE", desc: "Connect wallet via RainbowKit. Set up your account." },
+              { num: "02", title: "REQUEST", desc: "Call faucet function. Multipliers applied on-chain." },
+              { num: "03", title: "MONITOR", desc: "Track balance. Check referral stats. Withdraw anytime." },
             ].map((step, idx) => (
               <div key={idx} className="relative group">
                 <div className="border-4 border-dashed border-foreground p-12 text-center hover:border-solid hover:bg-foreground/10 transition-all">
@@ -259,19 +259,19 @@ export default function Home() {
 
         <div className="relative z-10 container mx-auto max-w-6xl px-8 text-center space-y-12">
           <h2 className="text-8xl md:text-9xl font-black leading-none" style={{fontFamily: "Oswald, sans-serif"}}>
-            BEGIN
+            START
             <br />
             YOUR
             <br />
-            EXHIBITION
+            EXECUTION
           </h2>
           <p className="text-2xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">
-            No complexity.<br />
-            No fees.<br />
-            Just rewards.
+            Built with Solidity.<br />
+            Powered by Web3.<br />
+            Yours to claim.
           </p>
           <Button size="lg" className="px-16 py-8 text-2xl font-black border-2 border-foreground" style={{fontFamily: "Oswald, sans-serif"}}>
-            ENTER NOW
+            CLAIM TOKENS
           </Button>
         </div>
       </section>
@@ -281,15 +281,15 @@ export default function Home() {
         <div className="container mx-auto max-w-7xl px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 pb-16 border-b-2 border-foreground">
             <div>
-              <h3 className="font-black text-2xl mb-4" style={{fontFamily: "Oswald, sans-serif"}}>LAMBDA</h3>
+              <h3 className="font-black text-2xl mb-4" style={{fontFamily: "Oswald, sans-serif"}}>λ LAMBDA</h3>
               <p className="text-sm text-muted-foreground font-light">
-                Industrial museum of token distribution.
+                Personal protocol by lambda0x63. Function-based token distribution built on Solidity.
               </p>
             </div>
             {[
-              ["Exhibition", ["Features", "Guide", "Contract"]],
-              ["Community", ["Discord", "Twitter", "GitHub"]],
-              ["Legal", ["Privacy", "Terms"]],
+              ["Protocol", ["Contract ABI", "Mechanics", "Parameters"]],
+              ["Developer", ["GitHub", "Twitter", "Docs"]],
+              ["Network", ["Testnet", "Status", "Explore"]],
             ].map((col, idx) => (
               <div key={idx}>
                 <h4 className="font-black mb-4" style={{fontFamily: "Oswald, sans-serif"}}>{col[0]}</h4>
@@ -303,7 +303,7 @@ export default function Home() {
           </div>
 
           <div className="text-center text-sm text-muted-foreground font-light">
-            <p>&copy; 2025 Lambda Faucet. Industrial. Refined. Open.</p>
+            <p>&copy; 2025 Lambda Protocol. Made by lambda0x63. Explore blockchain development.</p>
           </div>
         </div>
       </footer>

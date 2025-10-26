@@ -191,3 +191,54 @@
 button[type="button"] {
   border-radius: 0 !important;
 }
+
+/* RainbowKit Modal Styling */
+[data-testid="rk-modal"] {
+  border: 2px solid var(--foreground) !important;
+  border-radius: 0 !important;
+}
+
+[data-testid="rk-modal-header"] {
+  border-bottom: 2px solid var(--border) !important;
+  font-family: "Oswald", sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 1.25rem !important;
+  letter-spacing: 0.05em !important;
+}
+
+[data-testid="rk-wallet-option"],
+[role="button"][class*="WalletOption"] {
+  border: 1px solid var(--border) !important;
+  border-radius: 0 !important;
+  transition: all 0.3s ease !important;
+}
+
+[data-testid="rk-wallet-option"]:hover,
+[role="button"][class*="WalletOption"]:hover {
+  border-color: var(--foreground) !important;
+  background-color: var(--card) !important;
+  transform: translateY(-2px);
+}
+
+/* RainbowKit Modal Overlay */
+div[style*="position: fixed"][style*="inset: 0"] {
+  backdrop-filter: blur(4px) !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Account Menu */
+[data-testid="rk-account-menu"] {
+  border: 2px solid var(--foreground) !important;
+  border-radius: 0 !important;
+  background-color: var(--card) !important;
+}
+
+[data-testid="rk-account-menu"] button {
+  border-radius: 0 !important;
+  transition: all 0.3s ease !important;
+}
+
+[data-testid="rk-account-menu"] button:hover {
+  background-color: var(--accent) !important;
+  color: var(--foreground) !important;
+}

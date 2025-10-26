@@ -1,10 +1,24 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="border-b-4 border-foreground bg-background sticky top-0 z-50">
+    <header className={`border-b-4 border-foreground sticky top-0 z-50 transition-all duration-300 ${
+      isScrolled ? "bg-background" : "bg-transparent"
+    }`}>
       <div className="container mx-auto max-w-7xl px-8 py-6 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-6">

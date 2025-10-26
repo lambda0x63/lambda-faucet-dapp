@@ -57,7 +57,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Feature 1 */}
-            <Card className="p-8 card-elevated">
+            <Card className="p-8 shadow-md hover:shadow-lg transition-shadow">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-lg bg-blue-100 dark:bg-blue-900">
                   <Zap className="w-6 h-6 text-blue-600 dark:text-blue-400" />
@@ -72,7 +72,7 @@ export default function Home() {
             </Card>
 
             {/* Feature 2 */}
-            <Card className="p-8 card-elevated">
+            <Card className="p-8 shadow-md hover:shadow-lg transition-shadow">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-lg bg-green-100 dark:bg-green-900">
                   <Gift className="w-6 h-6 text-green-600 dark:text-green-400" />
@@ -87,7 +87,7 @@ export default function Home() {
             </Card>
 
             {/* Feature 3 */}
-            <Card className="p-8 card-elevated">
+            <Card className="p-8 shadow-md hover:shadow-lg transition-shadow">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-lg bg-purple-100 dark:bg-purple-900">
                   <TrendingUp className="w-6 h-6 text-purple-600 dark:text-purple-400" />
@@ -102,7 +102,7 @@ export default function Home() {
             </Card>
 
             {/* Feature 4 */}
-            <Card className="p-8 card-elevated">
+            <Card className="p-8 shadow-md hover:shadow-lg transition-shadow">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-lg bg-orange-100 dark:bg-orange-900">
                   <Shield className="w-6 h-6 text-orange-600 dark:text-orange-400" />

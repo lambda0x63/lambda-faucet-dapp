@@ -16,17 +16,17 @@ export function Header() {
   }, []);
 
   return (
-    <header className={`border-b-4 border-foreground fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <header className={`border-b-2 border-foreground fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? "bg-background" : "bg-transparent"
     }`}>
-      <div className="container mx-auto max-w-7xl px-8 py-6 flex items-center justify-between">
+      <div className="w-full px-8 py-6 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-6 ml-8">
           <h1
             className="text-3xl font-black tracking-tighter hover:opacity-70 transition-opacity"
             style={{fontFamily: "Oswald, sans-serif"}}
           >
-            ⬜ LAMBDA
+            λ LAMBDA
           </h1>
 
           {/* Divider */}
@@ -62,7 +62,9 @@ export function Header() {
         </div>
 
         {/* Connect Button */}
-        <ConnectButton />
+        <div className="ml-auto mr-4">
+          <ConnectButton />
+        </div>
       </div>
     </header>
   );

@@ -17,12 +17,16 @@ export default function Home() {
       <section className="relative min-h-screen flex items-end pb-20 border-b-4 border-foreground overflow-hidden bg-gradient-to-b from-background via-background to-foreground/5 -mt-24">
         {/* Asset Container - Hero */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 right-0 w-1/2 h-full opacity-30 pointer-events-none">
-            {/* Asset: Industrial machinery, gears, steam */}
-          </div>
-          <div className="absolute bottom-0 left-0 w-2/5 h-3/4 opacity-20 pointer-events-none">
-            {/* Asset: Pipes, metal structures */}
-          </div>
+          <img
+            src="/assets/hero-main.jpeg"
+            alt="Hero Background"
+            className="absolute inset-0 w-full h-full opacity-15 pointer-events-none"
+            style={{
+              objectPosition: "center",
+              objectFit: "cover",
+              clipPath: "inset(0 15% 0 0)"
+            }}
+          />
           {/* Scanlines effect */}
           <div className="absolute inset-0 opacity-5 pointer-events-none mix-blend-overlay"
             style={{backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 2px, currentColor 2px, currentColor 4px)"}}
@@ -64,9 +68,11 @@ export default function Home() {
       {/* SECTION 1 - METRICS HALL */}
       <section className="relative py-40 border-b-4 border-foreground bg-card/30">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/2 right-0 w-1/2 h-full opacity-25 pointer-events-none -translate-y-1/2">
-            {/* Asset: Measurement tools, gauges */}
-          </div>
+          <img
+            src="/assets/protocol-bg.jpeg"
+            alt="Protocol Background"
+            className="absolute top-1/2 right-0 w-1/2 h-full opacity-20 pointer-events-none -translate-y-1/2 object-cover"
+          />
           {/* Grid pattern */}
           <div className="absolute inset-0 opacity-10 pointer-events-none"
             style={{backgroundImage: "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
@@ -170,9 +176,11 @@ export default function Home() {
       {/* SECTION 3 - MULTIPLIER SYSTEMS */}
       <section className="relative py-40 border-b-4 border-foreground bg-card/30">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute bottom-0 right-0 w-1/3 h-full opacity-20 pointer-events-none">
-            {/* Asset: Mechanical gears, machines */}
-          </div>
+          <img
+            src="/assets/mechanics-bg.jpeg"
+            alt="Mechanics Background"
+            className="absolute bottom-0 right-0 w-1/3 h-full opacity-15 pointer-events-none object-cover"
+          />
         </div>
 
         <div className="relative z-10 container mx-auto max-w-7xl px-8">
@@ -217,7 +225,11 @@ export default function Home() {
       {/* SECTION 4 - FLOW */}
       <section className="relative py-40 border-b-4 border-foreground">
         <div className="absolute inset-0 overflow-hidden">
-          {/* Asset: Flow diagram elements */}
+          <img
+            src="/assets/systems-bg.jpeg"
+            alt="Systems Background"
+            className="absolute inset-0 w-full h-full opacity-15 pointer-events-none object-cover"
+          />
         </div>
 
         <div className="relative z-10 container mx-auto max-w-7xl px-8">

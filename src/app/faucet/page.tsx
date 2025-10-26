@@ -5,19 +5,39 @@ import { useAccount } from "wagmi";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import {
+  useUserStats,
+  useGlobalStats,
+  useTokenBalance,
+  useTimeUntilNextRequest,
+  useEstimatedAmount,
+  useMyReferralCode,
+  useReferralInfo,
+} from "@/hooks";
 
 export default function FaucetPage() {
   const { address, isConnected } = useAccount();
   const [copiedCode, setCopiedCode] = useState(false);
 
+  // Fetch real smart contract data
+  const { userStats, isLoading: userStatsLoading } = useUserStats();
+  const { globalStats, isLoading: globalStatsLoading } = useGlobalStats();
+  const { formatted: balance, isLoading: balanceLoading } = useTokenBalance(address);
+  const { timeUntilNextRequest } = useTimeUntilNextRequest();
+  const { estimatedAmount } = useEstimatedAmount();
+  const { referralCode } = useMyReferralCode();
+  const { referralInfo } = useReferralInfo();
+
   const copyToClipboard = () => {
-    navigator.clipboard.writeText("0x3a4f7c8e9b2d5f1a");
-    setCopiedCode(true);
-    setTimeout(() => setCopiedCode(false), 2000);
+    if (referralCode) {
+      navigator.clipboard.writeText(referralCode);
+      setCopiedCode(true);
+      setTimeout(() => setCopiedCode(false), 2000);
+    }
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans">
+    <div className="min-h-screen bg-background text-foreground font-sans pt-24">
       <Header />
 
       {/* HERO - FAUCET HEADER */}
@@ -90,7 +110,7 @@ export default function FaucetPage() {
                     YOUR BALANCE
                   </p>
                   <div className="text-6xl font-black" style={{ fontFamily: "Oswald, sans-serif" }}>
-                    0
+                    {balanceLoading ? "..." : balance ?? "0"}
                   </div>
                   <p className="text-sm text-muted-foreground font-mono mt-1">LMDA</p>
                 </div>
@@ -100,7 +120,7 @@ export default function FaucetPage() {
                     NEXT REQUEST
                   </p>
                   <div className="text-5xl font-black text-foreground" style={{ fontFamily: "Oswald, sans-serif" }}>
-                    00:45:23
+                    {timeUntilNextRequest ?? "00:00:00"}
                   </div>
                   <p className="text-sm text-muted-foreground mt-2">⏰ Time until next claim available</p>
                 </div>
@@ -110,7 +130,7 @@ export default function FaucetPage() {
                     ESTIMATED AMOUNT
                   </p>
                   <div className="text-4xl font-black" style={{ fontFamily: "Oswald, sans-serif" }}>
-                    ~100
+                    ~{estimatedAmount ?? "0"}
                   </div>
                   <p className="text-sm text-muted-foreground font-mono mt-1">LMDA (after multipliers)</p>
                 </div>
@@ -138,21 +158,21 @@ export default function FaucetPage() {
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-muted-foreground">Balance</span>
                     <span className="text-2xl font-black" style={{ fontFamily: "Oswald, sans-serif" }}>
-                      80%
+                      {userStats.balanceMultiplier}
                     </span>
                   </div>
 
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-muted-foreground">Time (UTC)</span>
                     <span className="text-2xl font-black" style={{ fontFamily: "Oswald, sans-serif" }}>
-                      100%
+                      {userStats.timeMultiplier}
                     </span>
                   </div>
 
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-muted-foreground">Cooldown</span>
                     <span className="text-2xl font-black" style={{ fontFamily: "Oswald, sans-serif" }}>
-                      2x
+                      {userStats.cooldownMultiplier}
                     </span>
                   </div>
 
@@ -160,10 +180,10 @@ export default function FaucetPage() {
                     <div className="flex items-center justify-between">
                       <span className="font-mono text-muted-foreground">Final Rate</span>
                       <span className="text-3xl font-black text-foreground" style={{ fontFamily: "Oswald, sans-serif" }}>
-                        160%
+                        {userStats.finalRate}
                       </span>
                     </div>
-                    <p className="text-xs text-muted-foreground mt-2">80% × 100% × 2x</p>
+                    <p className="text-xs text-muted-foreground mt-2">{userStats.balanceMultiplier} × {userStats.timeMultiplier} × {userStats.cooldownMultiplier}</p>
                   </div>
                 </div>
               </div>
@@ -203,7 +223,7 @@ export default function FaucetPage() {
               </h3>
               <div className="space-y-4">
                 <div className="bg-foreground/10 p-4 border border-foreground font-mono text-sm break-all">
-                  0x3a4f7c8e9b2d5f1a
+                  {referralCode ?? "Generate code on first claim"}
                 </div>
                 <Button
                   variant="outline"
@@ -227,7 +247,7 @@ export default function FaucetPage() {
                     INVITED
                   </p>
                   <div className="text-5xl font-black" style={{ fontFamily: "Oswald, sans-serif" }}>
-                    7
+                    {referralInfo?.referralCount ?? "0"}
                   </div>
                   <p className="text-sm text-muted-foreground mt-1">people</p>
                 </div>
@@ -245,7 +265,7 @@ export default function FaucetPage() {
                     TOTAL REWARDS
                   </p>
                   <div className="text-5xl font-black" style={{ fontFamily: "Oswald, sans-serif" }}>
-                    70
+                    {referralInfo?.totalEarned ?? "0"}
                   </div>
                   <p className="text-sm text-muted-foreground font-mono mt-1">LMDA</p>
                 </div>
@@ -285,12 +305,12 @@ export default function FaucetPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { label: "TOTAL RECEIVED", value: "1,500", unit: "LMDA" },
-              { label: "TOTAL REQUESTS", value: "15", unit: "" },
-              { label: "FIRST REQUEST", value: "2025-10-01", unit: "" },
-              { label: "LATEST REQUEST", value: "2025-10-26", unit: "" },
-              { label: "MAX REQUEST", value: "200", unit: "LMDA" },
-              { label: "AVG REQUEST", value: "100", unit: "LMDA" },
+              { label: "TOTAL RECEIVED", value: userStats?.totalReceived.toString() ?? "0", unit: "LMDA" },
+              { label: "TOTAL REQUESTS", value: userStats?.totalRequests.toString() ?? "0", unit: "" },
+              { label: "FIRST REQUEST", value: userStats?.firstRequestTime ? new Date(Number(userStats.firstRequestTime) * 1000).toLocaleDateString() : "---", unit: "" },
+              { label: "LATEST REQUEST", value: userStats?.lastRequestTime ? new Date(Number(userStats.lastRequestTime) * 1000).toLocaleDateString() : "---", unit: "" },
+              { label: "MAX REQUEST", value: userStats?.maxSingleRequest.toString() ?? "0", unit: "LMDA" },
+              { label: "AVG REQUEST", value: userStats?.averageRequest.toString() ?? "0", unit: "LMDA" },
             ].map((stat, idx) => (
               <div key={idx} className="border-4 border-foreground p-8 text-center">
                 <p
@@ -333,10 +353,10 @@ export default function FaucetPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border-2 border-foreground">
             {[
-              { label: "TOTAL DISTRIBUTED", value: "500K", unit: "LMDA" },
-              { label: "ACTIVE USERS", value: "1,234", unit: "" },
-              { label: "TOTAL REQUESTS", value: "45,678", unit: "" },
-              { label: "FAUCET BALANCE", value: "250K", unit: "LMDA" },
+              { label: "TOTAL DISTRIBUTED", value: globalStats?.totalDistributed.toString() ?? "0", unit: "LMDA" },
+              { label: "ACTIVE USERS", value: globalStats?.uniqueUsers.toString() ?? "0", unit: "" },
+              { label: "TOTAL REQUESTS", value: globalStats?.totalRequests.toString() ?? "0", unit: "" },
+              { label: "FAUCET BALANCE", value: "Calculating...", unit: "LMDA" },
             ].map((stat, idx) => (
               <div
                 key={idx}

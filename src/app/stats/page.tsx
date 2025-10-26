@@ -1,11 +1,19 @@
 "use client";
 
+import { useAccount } from "wagmi";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { useUserStats, useGlobalStats } from "@/hooks";
 
 export default function StatsPage() {
+  const { address, isConnected } = useAccount();
+
+  // Fetch real smart contract data
+  const { userStats, isLoading: userStatsLoading } = useUserStats();
+  const { globalStats, isLoading: globalStatsLoading } = useGlobalStats();
+
   return (
-    <div className="min-h-screen bg-background text-foreground font-sans">
+    <div className="min-h-screen bg-background text-foreground font-sans pt-24">
       <Header />
 
       {/* HERO - STATS HEADER */}
@@ -74,19 +82,19 @@ export default function StatsPage() {
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-muted-foreground">Total Received</span>
                     <span className="text-2xl font-black" style={{ fontFamily: "Oswald, sans-serif" }}>
-                      1,500 LMDA
+                      {userStatsLoading ? "..." : userStats?.totalReceived.toString() ?? "0"} LMDA
                     </span>
                   </div>
                   <div className="border-t border-border pt-4 flex items-center justify-between">
                     <span className="font-mono text-muted-foreground">Total Requests</span>
                     <span className="text-2xl font-black" style={{ fontFamily: "Oswald, sans-serif" }}>
-                      15
+                      {userStatsLoading ? "..." : userStats?.totalRequests.toString() ?? "0"}
                     </span>
                   </div>
                   <div className="border-t border-border pt-4 flex items-center justify-between">
                     <span className="font-mono text-muted-foreground">Average per Request</span>
                     <span className="text-2xl font-black" style={{ fontFamily: "Oswald, sans-serif" }}>
-                      100 LMDA
+                      {userStatsLoading ? "..." : userStats?.averageRequest.toString() ?? "0"} LMDA
                     </span>
                   </div>
                 </div>
@@ -99,16 +107,16 @@ export default function StatsPage() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-muted-foreground">First Request</span>
-                    <span className="text-lg font-mono">2025-10-01</span>
+                    <span className="text-lg font-mono">{userStatsLoading ? "..." : userStats?.firstRequestTime ? new Date(Number(userStats.firstRequestTime) * 1000).toLocaleDateString() : "---"}</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-muted-foreground">Latest Request</span>
-                    <span className="text-lg font-mono">2025-10-26</span>
+                    <span className="text-lg font-mono">{userStatsLoading ? "..." : userStats?.lastRequestTime ? new Date(Number(userStats.lastRequestTime) * 1000).toLocaleDateString() : "---"}</span>
                   </div>
                   <div className="border-t border-border pt-4 flex items-center justify-between">
                     <span className="font-mono text-muted-foreground">Max in Single Request</span>
                     <span className="text-xl font-black" style={{ fontFamily: "Oswald, sans-serif" }}>
-                      200 LMDA
+                      {userStatsLoading ? "..." : userStats?.maxSingleRequest.toString() ?? "0"} LMDA
                     </span>
                   </div>
                 </div>
@@ -125,28 +133,28 @@ export default function StatsPage() {
                   <p className="text-xs font-black text-muted-foreground tracking-widest mb-1" style={{ fontFamily: "Oswald, sans-serif" }}>
                     CURRENT BALANCE
                   </p>
-                  <p className="font-mono text-muted-foreground">75-50%: 80% multiplier</p>
+                  <p className="font-mono text-muted-foreground">{userStatsLoading ? "..." : "Calculating..."} multiplier</p>
                 </div>
                 <div className="border-l-4 border-foreground pl-4">
                   <p className="text-xs font-black text-muted-foreground tracking-widest mb-1" style={{ fontFamily: "Oswald, sans-serif" }}>
                     TIME BASED
                   </p>
-                  <p className="font-mono text-muted-foreground">08:00-16:00 UTC: 100%</p>
+                  <p className="font-mono text-muted-foreground">{userStatsLoading ? "..." : "Calculating..."}</p>
                 </div>
                 <div className="border-l-4 border-foreground pl-4">
                   <p className="text-xs font-black text-muted-foreground tracking-widest mb-1" style={{ fontFamily: "Oswald, sans-serif" }}>
                     COOLDOWN
                   </p>
-                  <p className="font-mono text-muted-foreground">11-50 req/hour: 2x</p>
+                  <p className="font-mono text-muted-foreground">{userStatsLoading ? "..." : "Calculating..."}</p>
                 </div>
                 <div className="border-t-2 border-foreground pt-6">
                   <p className="text-xs font-black text-muted-foreground tracking-widest mb-2" style={{ fontFamily: "Oswald, sans-serif" }}>
                     EFFECTIVE RATE
                   </p>
                   <p className="text-3xl font-black text-foreground" style={{ fontFamily: "Oswald, sans-serif" }}>
-                    160%
+                    {userStatsLoading ? "..." : "Calculating..."}
                   </p>
-                  <p className="text-xs text-muted-foreground font-mono mt-1">80% × 100% × 2x</p>
+                  <p className="text-xs text-muted-foreground font-mono mt-1">---</p>
                 </div>
               </div>
             </div>
@@ -238,10 +246,10 @@ export default function StatsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border-2 border-foreground">
             {[
-              { label: "TOTAL DISTRIBUTED", value: "500K", unit: "LMDA" },
-              { label: "ACTIVE USERS", value: "1,234", unit: "" },
-              { label: "TOTAL REQUESTS", value: "45,678", unit: "" },
-              { label: "FAUCET BALANCE", value: "250K", unit: "LMDA" },
+              { label: "TOTAL DISTRIBUTED", value: globalStatsLoading ? "..." : globalStats?.totalDistributed.toString() ?? "0", unit: "LMDA" },
+              { label: "ACTIVE USERS", value: globalStatsLoading ? "..." : globalStats?.uniqueUsers.toString() ?? "0", unit: "" },
+              { label: "TOTAL REQUESTS", value: globalStatsLoading ? "..." : globalStats?.totalRequests.toString() ?? "0", unit: "" },
+              { label: "FAUCET BALANCE", value: globalStatsLoading ? "..." : "Calculating...", unit: "LMDA" },
             ].map((stat, idx) => (
               <div
                 key={idx}

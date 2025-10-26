@@ -1,74 +1,64 @@
 # Lambda Faucet dApp
 
-Web3 frontend for Lambda Token Faucet.
-
-## Smart Contracts
-
-👉 [lambda-token-faucet](https://github.com/username/lambda-token-faucet)
+Web3 frontend for Lambda Token distribution protocol.
 
 ## Tech Stack
 
-- Next.js 14 + TypeScript
-- wagmi + viem
-- RainbowKit
-- Tailwind CSS + shadcn/ui
-- Recharts
+- **Framework**: Next.js 14 + TypeScript
+- **Web3**: wagmi + viem + RainbowKit
+- **Styling**: Tailwind CSS + shadcn/ui
+- **Smart Contracts**: Connected via wagmi hooks
 
-## Getting Started
+## Quick Start
 
 ```bash
 npm install
 npm run dev
-
-Open http://localhost:3000
+# Open http://localhost:3000
 ```
 
 ## Environment Variables
 
-Copy `.env.local` and update with your values:
-- WalletConnect Project ID (https://cloud.walletconnect.com)
-- Contract addresses
-- Chain ID
-
-## Development
-
-1. Run Hardhat node (in lambda-token-faucet):
-```bash
-npx hardhat node
+Create `.env.local`:
+```
+NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=your_id
 ```
 
-2. Deploy contracts:
-```bash
-npx hardhat run scripts/deploy.js --network localhost
-```
+Get WalletConnect Project ID: https://cloud.walletconnect.com
 
-3. Update contract addresses in `.env.local`
+## Smart Contracts
 
-4. Run dev server:
-```bash
-npm run dev
-```
+Connected contracts:
+- `LambdaFaucet` - Token distribution
+- `FaucetStats` - Statistics tracking
+- `ReferralSystem` - Referral management
 
-## Deployment
+See: [lambda-token-faucet](https://github.com/lambda0x63/lambda-token-faucet)
 
-Deploy to Vercel:
-```bash
-vercel deploy
-```
+## Features
+
+- 🪙 **Token Claiming** - Dynamic multipliers (balance, time, cooldown)
+- 📊 **Analytics** - User stats and global metrics
+- 🔗 **Referral System** - Share code, earn rewards
+- 💼 **Wallet Integration** - MetaMask + RainbowKit
 
 ## Project Structure
 
 ```
 src/
-├── app/
-├── components/
-│   ├── ui/ (shadcn components)
-│   └── faucet/
+├── app/              # Pages (faucet, stats, docs, etc)
+├── components/       # Reusable components
+├── hooks/            # wagmi contract hooks
 ├── lib/
-│   ├── contracts/
-│   ├── utils.ts
-│   └── wagmi.ts
-├── hooks/
-└── config/
-    └── constants.ts
+│   ├── contracts/    # Contract ABIs & addresses
+│   └── wagmi.ts      # Web3 config
+└── config/           # Constants
 ```
+
+## Pages
+
+- `/` - Landing page
+- `/faucet` - Token claiming interface
+- `/stats` - User analytics
+- `/docs` - Documentation
+- `/how-it-works` - Protocol mechanics

@@ -13,7 +13,7 @@ export default function Home() {
       <Header />
 
       {/* HERO - GRAND ENTRANCE */}
-      <section className="relative min-h-screen flex items-end pb-20 border-b-4 border-foreground overflow-hidden bg-gradient-to-b from-background via-background to-foreground/5">
+      <section className="relative min-h-screen flex items-end pb-20 border-b-4 border-foreground overflow-hidden bg-gradient-to-b from-background via-background to-foreground/5 -mt-24">
         {/* Asset Container - Hero */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-0 right-0 w-1/2 h-full opacity-30 pointer-events-none">
